@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Emission Visualizer</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'displays/bs/css/flatly.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'displays/styles.css' %}" />		
+	</head>
+	<body>
+
+        <div class="page-header text-center" id="content">
+            <h1> OSCAR Emission visualizer </h1>
+        </div>
+
+		<div class="container-fluid" id="wrapper">  <!--id="wrapper"-->>
+            <div class="row">                
+                
+                <div class="col-6 col-sm-3 col-sm-offset-3"  id="content">
+
+                                        
+                        <form action="{% url 'model'%}" method="POST" role="form">
+                            {% csrf_token %}
+                            
+                            <div class ="form-group">
+                                <div class="row t10"> 
+                                    <div class="col-6 col-sm-3"  id="content">
+                                        <h3>model </h3> 
+                                        <div class="select" style="width:200px;">
+                                            <select id="model" name="model" class="form-control">
+                                              <option value="None">Select model:</option>
+                                              <option value="CEDS">CEDS</option>
+                                              <!--<option value="ACCMIP">ACCMIP</option>
+                                              <option value="CMIP6">CMIP6</option>-->                  
+                                            </select> 
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-sm-3 col-sm-offset-3"  id="content">
+                                        <h3>scenario </h3> 
+                                        <div class="select" style="width:200px;">
+                                            <select id="scenario" name="scenario" class="form-control">
+                                                <option value="None">Select scenario:</option>
+                                                <option value="all">all</option>
+                                                <option value="historical">hist</option>
+                                                <option value="ssp119">ssp119</option>
+                                                <option value="ssp534">ssp534</option>                  
+                                              </select>                                 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row t10">
+                                    <div class="col-6 col-sm-3"  id="content">
+                                        <h3>region </h3> 
+                                        <div class="select" style="width:200px;">
+                                            <select id="region" name="region" class="form-control">
+                                            <option value="None">Select country:</option>
+                                            <option value="global">Global</option>
+                                            <option value="USA">USA</option>
+                                            <option value="IND">IND</option>                  
+                                          </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-sm-3 col-sm-offset-3"  id="content">                                        
+                                        <h3>species </h3>                                         
+                                        <div class="select" style="width:200px;">
+                                            <select id="species" name="species" class="form-control">
+                                            <option value="None">Select species:</option>
+                                            <option value="E_BC">BC</option>
+                                            <option value="E_CO2">CO2</option>
+                                            <option value="E_CH4">CH4</option>                  
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>          
+
+                            <input class="btn btn-success btn-lg btn-block" type="submit" value="Run">
+                            </br>
+                        </form>
+                    </div>
+                    
+                <div class="col-6 col-sm-3 " > <!--style="background-color: aliceblue;"-->>
+                    <div class="text-center">
+                        <img src="{% static 'displays/figures/dp_002.png' %}" class="img-rounded" alt="Cinque Terre" width="533" height="450">
+                    </div>                  
+                </div>
+
+            </div>
+        </div>
+        
+	
+	</body>
+</html>
